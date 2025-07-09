@@ -870,13 +870,13 @@ function updatePreview(form) {
   form.querySelector('#advancedSqlPreview').textContent = sql;
 }
 
-// Executa a consulta avançada
+// Executa a consulta 
 async function executeAdvancedQuery(form) {
   const sql = generateAdvancedSQL(form);
   const resultsContainer = form.querySelector('#advancedResults');
   const resultCount = form.querySelector('#resultCount');
   
-  safeLog('info', 'Executando consulta avançada', { sql });
+  safeLog('info', 'Executando consulta ', { sql });
   resultsContainer.innerHTML = '<div class="loading">🔄 Executando consulta...</div>';
   
   try {
@@ -915,7 +915,7 @@ async function executeAdvancedQuery(form) {
     }
   } catch (error) {
     const errorMessage = window.errorHandler ? 
-      window.errorHandler.handleApiError(error, 'Executar consulta avançada') : 
+      window.errorHandler.handleApiError(error, 'Executar consulta ') : 
       `Erro de conexão: ${error.message}`;
     
     resultCount.textContent = '';
@@ -924,7 +924,7 @@ async function executeAdvancedQuery(form) {
   }
 }
 
-// Renderiza tabela de resultados com funcionalidades avançadas
+// Renderiza tabela de resultados com funcionalidades 
 function renderAdvancedTable(data) {
   const headers = Object.keys(data[0]);
   const tableId = `table-${Date.now()}`;
@@ -1484,7 +1484,7 @@ function updateDebugInfo(form) {
 // Inicialização
 async function initAdvancedRelationForm() {
   try {
-    safeLog('info', 'Inicializando componente de busca relacional avançada');
+    safeLog('info', 'Inicializando componente de busca relacional ');
     
     const root = document.getElementById('advanced-relation-root');
     if (!root) {
@@ -1497,16 +1497,16 @@ async function initAdvancedRelationForm() {
     root.innerHTML = '';
     root.appendChild(createAdvancedRelationForm());
     
-    safeLog('info', 'Componente de busca relacional avançada inicializado com sucesso');
+    safeLog('info', 'Componente de busca relacional inicializado com sucesso');
   } catch (error) {
-    safeLog('error', 'Falha ao inicializar componente de busca relacional avançada', error);
+    safeLog('error', 'Falha ao inicializar componente de busca relacional ', error);
     
     const root = document.getElementById('advanced-relation-root');
     if (root) {
       root.innerHTML = `
         <div class="error-container">
           <h3>❌ Erro ao Carregar Componente</h3>
-          <p>Não foi possível inicializar a busca relacional avançada.</p>
+          <p>Não foi possível inicializar a busca relacional .</p>
           <details>
             <summary>Detalhes do erro</summary>
             <pre>${error.message}</pre>
